@@ -243,3 +243,8 @@
   margin-left: 20px;
   margin-top: 15px;
 }
+
+.heading-space{
+  @apply flex items-center gap-7 justify-center;
+  font-size: 72px;
+}

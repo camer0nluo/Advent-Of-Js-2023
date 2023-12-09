@@ -31,6 +31,22 @@ export const UPDATE_EVENT_NAME = gql`
   }
 `
 
+export const GET_EVENT_DATA = gql`
+  query EventsQuery($id: String!) {
+    event(id: $id) {
+      name
+      date
+      sendReminder
+      userStatus {
+        user {
+          firstName
+          lastName
+          email
+        }
+      }
+    }
+  }
+`
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>Empty</div>
