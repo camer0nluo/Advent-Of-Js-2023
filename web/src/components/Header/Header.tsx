@@ -1,8 +1,7 @@
-const Header = () => {
+const Header = ({ className, heading }) => {
   return (
-    <div>
-      <h2>{'Header'}</h2>
-      <p>{'Find me in ./web/src/components/Header/Header.tsx'}</p>
+    <div className={` font-condensed text-7xl uppercase ${className}`}>
+      {heading}
     </div>
   )
 }
