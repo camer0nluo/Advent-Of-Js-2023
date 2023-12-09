@@ -1,7 +1,10 @@
 {
-  "name": "web",
-  "version": "0.0.0",
+  "name": "advent-of-js",
+  "version": "1.0.0",
   "private": true,
+  "contributors": [
+    "Cameron Luo"
+  ],
   "browserslist": {
     "development": [
       "last 1 version"
