@@ -19,7 +19,12 @@ const ShowHidePassword = ({ name }) => {
       ) : (
         <TextField name={name} placeholder=" " required />
       )}
-      <button className="absolute right-6 top-8" onClick={toggleShowPassword}>
+      <button
+        className="absolute right-6 top-8"
+        onClick={toggleShowPassword}
+        aria-label="toggle show hide for password"
+        alt="toggle show hide for password"
+      >
         {isPasswordShowing ? (
           <Icon id="eyeClosed" size={32} />
         ) : (

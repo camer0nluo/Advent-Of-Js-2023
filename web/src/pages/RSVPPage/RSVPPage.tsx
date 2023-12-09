@@ -45,6 +45,7 @@ const RSVPPage = ({ id }) => {
           <RsvpButton
             className="bg-orangeRed text-white"
             icon="thumbsDown"
+            htmlFor="decline rsvp invite"
             handleButton={handleDecline}
             heading="Regretfully Decline"
           ></RsvpButton>
@@ -52,6 +53,7 @@ const RSVPPage = ({ id }) => {
             className="bg-spanishGreen text-white"
             icon="thumbsUp"
             handleButton={handleAccept}
+            htmlFor="accept rsvp invite"
             heading="Yes, I'll be there"
           ></RsvpButton>
         </div>
