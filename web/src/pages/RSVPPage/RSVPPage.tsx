@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { Link, routes } from '@redwoodjs/router'
+import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags, useQuery } from '@redwoodjs/web'
 
 import { QUERY } from 'src/components/EventsCell/EventsCell'
@@ -23,6 +23,13 @@ const RSVPPage = ({ id }) => {
     day: 'numeric',
   })
 
+  const handleAccept = () => {
+    navigate(routes.rsvpAccept())
+  }
+  const handleDecline = () => {
+    navigate(routes.rsvpDecline())
+  }
+
   return (
     <>
       <MetaTags title="RSVP Page" description="Rsvp page" />
@@ -38,11 +45,13 @@ const RSVPPage = ({ id }) => {
           <RsvpButton
             className="bg-orangeRed text-white"
             icon="thumbsDown"
+            handleButton={handleDecline}
             heading="Regretfully Decline"
           ></RsvpButton>
           <RsvpButton
             className="bg-spanishGreen text-white"
             icon="thumbsUp"
+            handleButton={handleAccept}
             heading="Yes, I'll be there"
           ></RsvpButton>
         </div>
