@@ -21,6 +21,8 @@ const Routes = () => {
         <Route path="/login" page={LoginPage} name="login" />
         <Route path="/" page={HomePage} name="home" />
         <Route path="/rsvp/{id:String}" page={RSVPPage} name="rsvp" />
+        <Route path="/rsvp-decline" page={RsvpDeclinePage} name="rsvpDecline" />
+        <Route path="/rsvp-accept" page={RsvpAcceptPage} name="rsvpAccept" />
         <Route notfound page={NotFoundPage} />
       </Set>
     </Router>

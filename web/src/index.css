@@ -206,6 +206,8 @@
   margin-bottom: 20px;
   height: 100px;
   width: 100%;
+  font-family: Kalam, cursive;
+  font-size: 36px;
   padding-left: 1.75rem;
   padding-right: 1.75rem;
   font-family: Inter, sans-serif;
@@ -247,4 +249,14 @@
 .heading-space{
   @apply flex items-center gap-7 justify-center;
   font-size: 72px;
+}
+
+.file-uploader{
+  border: none !important;
+
+}
+
+.file-upload-container{
+  border: 5px dashed grey;
+  background: transparent;
 }
