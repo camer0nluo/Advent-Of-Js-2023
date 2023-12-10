@@ -60,13 +60,13 @@ const LoginPage = () => {
             Submit
           </Submit>
           <div className="align-links	 container mx-auto items-center justify-center	">
-            <Link to={routes.signup()} className="underline">
+            {/* <Link to={routes.signup()} className="underline">
               Need an account?
             </Link>
             <br />
             <Link to={routes.forgotpassword()} className="underline">
               Forgot Password?
-            </Link>
+            </Link> */}
           </div>
         </Form>
       </div>
