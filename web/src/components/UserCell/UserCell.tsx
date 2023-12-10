@@ -9,7 +9,43 @@ export const QUERY = gql`
     }
   }
 `
+export const GET_USER_BY_USER_ID = gql`
+  query getUserByUserId($user_id: String!) {
+    user: userByUserId(user_id: $user_id) {
+      id
+      email
+    }
+  }
+`
+export const CREATE_USER = gql`
+  query createUser($email: String!, $firstName: String!, $user_id: String!) {
+    createUser(input: $input) {
+      id
+      email
+    }
+  }
+`
 
+export const CREATE_USER_MUTATION = gql`
+  mutation createUserQuery(
+    $email: String!
+    $firstName: String!
+    $user_id: String!
+    $role: Role!
+  ) {
+    createUser(
+      input: {
+        email: $email
+        firstName: $firstName
+        user_id: $user_id
+        role: $role
+      }
+    ) {
+      id
+      email
+    }
+  }
+`
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>Empty</div>
