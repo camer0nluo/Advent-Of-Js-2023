@@ -59,7 +59,6 @@ const SignupPage = () => {
         <HeaderWithRulers heading="Sign Up" className="text-white" />
         <Form onSubmit={onSubmit}>
           <Input name="Name" />
-          {/* <Input name="Email" /> */}
           <div className="field relative">
             <Label name="email">Email</Label>
             <TextField
@@ -82,6 +81,8 @@ const SignupPage = () => {
             })}
           />
           <Submit
+            htmlFor="submit"
+            alt="submit button"
             className="
       w-full
     rounded-full bg-supernova py-5 font-handwriting text-3xl uppercase text-black"

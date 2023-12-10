@@ -43,7 +43,12 @@ const ShowHidePassword = ({ name }) => {
           <FieldError name={name} className="error-message" />
         </>
       )}
-      <button className="absolute right-6 top-8" onClick={toggleShowPassword}>
+      <button
+        className="absolute right-6 top-8"
+        onClick={toggleShowPassword}
+        aria-label="toggle show hide for password"
+        alt="toggle show hide for password"
+      >
         {isPasswordShowing ? (
           <Icon id="eyeClosed" size={32} />
         ) : (
