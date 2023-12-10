@@ -98,13 +98,11 @@ export const Success = ({ event }: CellSuccessProps<EventsQuery>) => {
           <ModifyEvent id={event.id} />
         </div>
       </div>
-      {/* <Button className="button" handleClick={event.sendReminder/> */}
     </ul>
   )
 }
 
 export const ModifyEvent = ({ id }) => {
-  console.log(id)
   const [showModal, setShowModal] = React.useState(false)
   const [name, setName] = React.useState('')
   const [updateEventName, { data, loading, error }] =
