@@ -14,7 +14,7 @@ export const QUERY = gql`
       name
       date
       sendReminder
-      userStatus {
+      invite {
         user {
           firstName
           lastName
@@ -40,7 +40,7 @@ export const GET_EVENT_DATA = gql`
       name
       date
       sendReminder
-      userStatus {
+      invite {
         user {
           firstName
           lastName
@@ -54,7 +54,7 @@ export const GET_EVENT_DATA = gql`
 export const UPDATE_EVENT_USERS = gql`
   mutation updateEventUsers($id: String!, $input: AddUserToEventInput!) {
     addUsersToEvent(id: $id, input: $input) {
-      userStatus {
+      invite {
         user {
           id
           firstName
