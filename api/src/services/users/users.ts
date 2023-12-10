@@ -36,8 +36,8 @@ export const deleteUser: MutationResolvers['deleteUser'] = ({ id }) => {
 }
 
 export const User: UserRelationResolvers = {
-  status: (_obj, { root }) => {
-    return db.user.findUnique({ where: { id: root?.id } }).status()
+  invite: (_obj, { root }) => {
+    return db.user.findUnique({ where: { id: root?.id } }).invite()
   },
   santa: (_obj, { root }) => {
     return db.user.findUnique({ where: { id: root?.id } }).santa()

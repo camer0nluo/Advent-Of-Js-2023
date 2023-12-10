@@ -14,7 +14,7 @@ export const QUERY = gql`
       name
       date
       sendReminder
-      userStatus {
+      invite {
         user {
           firstName
           lastName
@@ -35,12 +35,12 @@ export const UPDATE_EVENT_NAME = gql`
 `
 
 export const GET_EVENT_DATA = gql`
-  query EventsQuery($id: String!) {
+  query getEvents($id: String!) {
     event(id: $id) {
       name
       date
       sendReminder
-      userStatus {
+      invite {
         user {
           firstName
           lastName
@@ -52,13 +52,11 @@ export const GET_EVENT_DATA = gql`
 `
 
 export const UPDATE_EVENT_USERS = gql`
-  mutation updateEventUsers($id: String!, $input: UpdateEventInput!) {
-    updateEvent(id: $id, input: $input) {
-      userStatus {
-        eventId
-        status
-        id
+  mutation updateEventUsers($id: String!, $input: AddUserToEventInput!) {
+    addUsersToEvent(id: $id, input: $input) {
+      invite {
         user {
+          id
           firstName
           email
         }
@@ -66,6 +64,23 @@ export const UPDATE_EVENT_USERS = gql`
     }
   }
 `
+export const CREATE_EVENT_MUTATION = gql`
+  mutation createEventMutation(
+    $name: String!
+    $date: DateTime!
+    $sendReminder: Boolean!
+  ) {
+    createEvent(
+      input: { name: $name, sendReminder: $sendReminder, date: $date }
+    ) {
+      id
+      name
+      date
+      createdAt
+    }
+  }
+`
+
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>Empty</div>

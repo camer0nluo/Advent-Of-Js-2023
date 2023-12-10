@@ -2,11 +2,13 @@ import { supabase } from 'api/db/supabase'
 
 import { Form, Submit, SubmitHandler } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { MetaTags, useMutation } from '@redwoodjs/web'
+import { toast } from '@redwoodjs/web/dist/toast'
 
 import HeaderWithRulers from 'src/components/HeaderWithRulers/HeaderWithRulers'
 import Input from 'src/components/Input/Input'
 import ShowHidePassword from 'src/components/ShowHidePassword/ShowHidePassword'
+import { CREATE_USER_MUTATION } from 'src/components/UserCell/UserCell'
 
 interface FormValues {
   name: string
@@ -23,6 +25,17 @@ const LoginPage = () => {
   const onLogin = () => {
     navigate(routes.event())
   }
+
+  const [createUserQuery, { loading }] = useMutation(CREATE_USER_MUTATION, {
+    onCompleted: (data) => {
+      toast.success('User was successfully created.')
+    },
+    onError: (error) => {
+      console.error({ error })
+      toast.error(error.message)
+    },
+  })
+
   async function signIn(state) {
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
@@ -30,13 +43,21 @@ const LoginPage = () => {
         password: state.Password,
       })
 
-      // Check for errors
       if (error) {
-        // Handle the error (e.g., display an error message)
+        toast.error('User is not successfully created.')
         console.error('Sign-in error:', error.message)
         setisInvalid(true)
       } else {
-        //setisInvalid(false)
+        getUser(data.user.id)
+        createUserQuery({
+          variables: {
+            email: data.user.email,
+            firstName: data.user.user_metadata.name,
+            user_id: data.user.id,
+            role: 'USER',
+          },
+        })
+        setisInvalid(false)
         onLogin()
       }
     } catch (e) {

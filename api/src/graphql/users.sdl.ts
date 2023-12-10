@@ -9,7 +9,7 @@ export const schema = gql`
     createdAt: DateTime!
     updatedAt: DateTime!
     role: Role!
-    status: [UserStatus]!
+    invite: [Invite]!
     santa: [Pairing]!
     person: [Pairing]!
     wishList: [WishList]!
