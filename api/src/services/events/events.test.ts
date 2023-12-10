@@ -26,14 +26,14 @@ describe('events', () => {
     const result = await createEvent({
       input: {
         name: 'String',
-        date: '2023-12-06T23:57:21.433Z',
-        updatedAt: '2023-12-06T23:57:21.433Z',
+        date: '2023-12-10T22:25:55.318Z',
+        updatedAt: '2023-12-10T22:25:55.318Z',
       },
     })
 
     expect(result.name).toEqual('String')
-    expect(result.date).toEqual(new Date('2023-12-06T23:57:21.433Z'))
-    expect(result.updatedAt).toEqual(new Date('2023-12-06T23:57:21.433Z'))
+    expect(result.date).toEqual(new Date('2023-12-10T22:25:55.318Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-12-10T22:25:55.318Z'))
   })
 
   scenario('updates a event', async (scenario: StandardScenario) => {

@@ -6,15 +6,15 @@ export const standard = defineScenario<Prisma.EventCreateArgs>({
     one: {
       data: {
         name: 'String',
-        date: '2023-12-06T23:57:21.447Z',
-        updatedAt: '2023-12-06T23:57:21.447Z',
+        date: '2023-12-10T22:25:55.333Z',
+        updatedAt: '2023-12-10T22:25:55.333Z',
       },
     },
     two: {
       data: {
         name: 'String',
-        date: '2023-12-06T23:57:21.447Z',
-        updatedAt: '2023-12-06T23:57:21.447Z',
+        date: '2023-12-10T22:25:55.333Z',
+        updatedAt: '2023-12-10T22:25:55.333Z',
       },
     },
   },

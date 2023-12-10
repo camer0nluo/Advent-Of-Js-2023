@@ -6,7 +6,7 @@ export const schema = gql`
     createdAt: DateTime!
     updatedAt: DateTime!
     sendReminder: Boolean!
-    userStatus: [UserStatus]!
+    invite: [Invite]!
     pairing: [Pairing]!
     wishList: [WishList]!
     thankYou: [ThankYou]!

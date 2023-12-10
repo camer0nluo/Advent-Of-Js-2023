@@ -1,10 +1,22 @@
+import { MetaTags, useMutation } from '@redwoodjs/web'
+
 import Card from '../Card/Card'
+import { UPDATE_EVENT_USERS } from '../EventsCell/EventsCell'
 import RoundButton from '../RoundButton/RoundButton'
 
 const InviteGroup = ({ id }) => {
   console.log(id)
+  const [updateEventUsers, { loading }] = useMutation(UPDATE_EVENT_USERS, {
+    onCompleted: (data) => {
+      toast.success('User was successfully created.')
+    },
+    onError: (error) => {
+      console.error({ error })
+      toast.error(error.message)
+    },
+  })
   const onSubmit = () => {
-    console.log('d')
+    console.log('wip')
   }
   return (
     <div>
@@ -33,7 +45,7 @@ const InviteGroup = ({ id }) => {
         <RoundButton handleClick={onSubmit} status="warning" />
       </div>
       <div className="grid grid-cols-2 gap-x-12 gap-y-8">
-        <Card
+        {/* <Card
           avatar={{
             alt: 'Avatar',
             avatar: 'https://picsum.photos/seed/1701322447715/300/300',
@@ -48,7 +60,7 @@ const InviteGroup = ({ id }) => {
           }}
           email="email@email.com"
           name="Cameron L"
-        />
+        /> */}
       </div>
     </div>
   )
