@@ -2,12 +2,15 @@ import type { EventsQuery } from 'types/graphql'
 
 import type { CellFailureProps, CellSuccessProps } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
+import { Toaster } from '@redwoodjs/web/toast'
 
 import Button from '../Button/Button'
+import ModalPopup from '../ModalPopup/ModalPopup'
 
 export const QUERY = gql`
   query EventsQuery($id: String!) {
     event(id: $id) {
+      id
       name
       date
       sendReminder
@@ -47,6 +50,22 @@ export const GET_EVENT_DATA = gql`
     }
   }
 `
+
+export const UPDATE_EVENT_USERS = gql`
+  mutation updateEventUsers($id: String!, $input: UpdateEventInput!) {
+    updateEvent(id: $id, input: $input) {
+      userStatus {
+        eventId
+        status
+        id
+        user {
+          firstName
+          email
+        }
+      }
+    }
+  }
+`
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>Empty</div>
@@ -79,25 +98,49 @@ export const Success = ({ event }: CellSuccessProps<EventsQuery>) => {
           <ModifyEvent id={event.id} />
         </div>
       </div>
-      {/* <Button className="button" handleClick={event.sendReminder/> */}
     </ul>
   )
 }
 
-export const ModifyEvent = ({ id, name }) => {
+export const ModifyEvent = ({ id }) => {
+  const [showModal, setShowModal] = React.useState(false)
+  const [name, setName] = React.useState('')
   const [updateEventName, { data, loading, error }] =
     useMutation(UPDATE_EVENT_NAME)
 
   const handleCheckClick = () => {
     updateEventName({
       variables: { id, name },
+      refetchQueries: [{ query: GET_EVENT_DATA, variables: { id } }],
     })
+    setShowModal(false)
+  }
+  const openEditEventModal = () => {
+    setShowModal(true)
   }
 
+  const inputs = (
+    <input
+      type="text"
+      className="date-field"
+      placeholder="new name here"
+      onChange={(e) => setName(e.target.value)}
+    />
+  )
   return (
     <>
+      {showModal && (
+        <ModalPopup
+          setShowModal={() => setShowModal(false)}
+          title="Modify Event Name"
+          message="Modify your event name"
+          confirm={handleCheckClick}
+          inputElement={inputs}
+        ></ModalPopup>
+      )}
+
       <Button
-        handleClick={handleCheckClick}
+        handleClick={openEditEventModal}
         className="margin-auto bg-supernova align-middle text-black"
         size="small"
       >
