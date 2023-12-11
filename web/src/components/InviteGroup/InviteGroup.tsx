@@ -19,9 +19,8 @@ const InviteGroup = ({ id }) => {
   const [userInvites, setUserInvites] = useState([])
   const [userData, setUserData] = useState({})
   const [sendInvite] = useMutation(SEND_INVITE, {
-    onCompleted: (data) => {
+    onCompleted: () => {
       toast.success('Invite was successfully sent.')
-      console.log(data)
       getInvites({ variables: { id } })
     },
     onError: (error) => {

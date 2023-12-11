@@ -11,7 +11,6 @@ const EventPage = () => {
   const [createEvent, { loading }] = useMutation(CREATE_EVENT_MUTATION, {
     onCompleted: (data) => {
       toast.success('Event was successfully created.')
-      console.log(data)
       navigate(routes.invite({ id: data.createEvent.id }))
     },
     onError: (error) => {
