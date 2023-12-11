@@ -31,15 +31,17 @@ describe('invites', () => {
   scenario('creates a invite', async (scenario: StandardScenario) => {
     const result = await createInvite({
       input: {
-        userId: scenario.invite.two.userId,
         eventId: scenario.invite.two.eventId,
         status: 'INVITED',
+        email: 'String',
+        name: 'String',
       },
     })
 
-    expect(result.userId).toEqual(scenario.invite.two.userId)
     expect(result.eventId).toEqual(scenario.invite.two.eventId)
     expect(result.status).toEqual('INVITED')
+    expect(result.email).toEqual('String')
+    expect(result.name).toEqual('String')
   })
 
   scenario('updates a invite', async (scenario: StandardScenario) => {

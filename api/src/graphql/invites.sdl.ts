@@ -1,11 +1,13 @@
 export const schema = gql`
   type Invite {
-    id: Int!
-    userId: Int!
-    user: User!
+    id: String!
+    userId: String
+    user: User
     eventId: String!
     event: Event!
     status: Status!
+    email: String!
+    name: String!
   }
 
   enum Status {
@@ -16,24 +18,29 @@ export const schema = gql`
 
   type Query {
     invites: [Invite!]! @requireAuth
-    invite(id: Int!): Invite @requireAuth
+    invite(id: String!): Invite @requireAuth
+    inviteEvent(eventId: String!): [Invite!]! @requireAuth
   }
 
   input CreateInviteInput {
-    userId: Int!
+    userId: String
     eventId: String!
     status: Status!
+    email: String!
+    name: String!
   }
 
   input UpdateInviteInput {
-    userId: Int
+    userId: String
     eventId: String
     status: Status
+    email: String
+    name: String
   }
 
   type Mutation {
     createInvite(input: CreateInviteInput!): Invite! @requireAuth
-    updateInvite(id: Int!, input: UpdateInviteInput!): Invite! @requireAuth
-    deleteInvite(id: Int!): Invite! @requireAuth
+    updateInvite(id: String!, input: UpdateInviteInput!): Invite! @requireAuth
+    deleteInvite(id: String!): Invite! @requireAuth
   }
 `

@@ -1,7 +1,7 @@
 import type {
-  QueryResolvers,
-  MutationResolvers,
   InviteRelationResolvers,
+  MutationResolvers,
+  QueryResolvers,
 } from 'types/graphql'
 
 import { db } from 'src/lib/db'
@@ -9,10 +9,15 @@ import { db } from 'src/lib/db'
 export const invites: QueryResolvers['invites'] = () => {
   return db.invite.findMany()
 }
-
 export const invite: QueryResolvers['invite'] = ({ id }) => {
   return db.invite.findUnique({
     where: { id },
+  })
+}
+
+export const inviteEvent: QueryResolvers['inviteEvent'] = ({ eventId }) => {
+  return db.invite.findMany({
+    where: { eventId },
   })
 }
 
