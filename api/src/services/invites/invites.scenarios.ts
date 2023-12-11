@@ -6,17 +6,13 @@ export const standard = defineScenario<Prisma.InviteCreateArgs>({
     one: {
       data: {
         status: 'INVITED',
-        user: {
-          create: {
-            email: 'String6273392',
-            updatedAt: '2023-12-10T22:25:33.039Z',
-          },
-        },
+        email: 'String',
+        name: 'String',
         event: {
           create: {
             name: 'String',
-            date: '2023-12-10T22:25:33.039Z',
-            updatedAt: '2023-12-10T22:25:33.039Z',
+            date: '2023-12-11T05:39:11.615Z',
+            updatedAt: '2023-12-11T05:39:11.615Z',
           },
         },
       },
@@ -24,17 +20,13 @@ export const standard = defineScenario<Prisma.InviteCreateArgs>({
     two: {
       data: {
         status: 'INVITED',
-        user: {
-          create: {
-            email: 'String2011845',
-            updatedAt: '2023-12-10T22:25:33.039Z',
-          },
-        },
+        email: 'String',
+        name: 'String',
         event: {
           create: {
             name: 'String',
-            date: '2023-12-10T22:25:33.039Z',
-            updatedAt: '2023-12-10T22:25:33.039Z',
+            date: '2023-12-11T05:39:11.615Z',
+            updatedAt: '2023-12-11T05:39:11.615Z',
           },
         },
       },

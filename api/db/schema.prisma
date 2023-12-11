@@ -34,12 +34,14 @@ enum Role {
 }
 
 model Invite {
-  id      Int    @id @default(autoincrement())
-  userId  Int
-  user    User   @relation(fields: [userId], references: [id])
+  id      String  @id @default(uuid())
+  userId  String?
+  user    User?   @relation(fields: [userId], references: [user_id])
   eventId String
-  event   Event  @relation(fields: [eventId], references: [id])
+  event   Event   @relation(fields: [eventId], references: [id])
   status  Status
+  email   String
+  name    String
 }
 
 enum Status {
