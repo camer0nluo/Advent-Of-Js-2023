@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import {
   FieldError,
   Form,
@@ -8,12 +6,13 @@ import {
   TextField,
   useForm,
 } from '@redwoodjs/forms'
-import { useMutation } from '@redwoodjs/web'
-import { toast } from '@redwoodjs/web/dist/toast'
-
 import { QUERY, SEND_INVITE } from '../InviteCell/InviteCell'
+
 import InviteCell from '../InviteCell/InviteCell'
 import RoundButton from '../RoundButton/RoundButton'
+import { toast } from '@redwoodjs/web/dist/toast'
+import { useMutation } from '@redwoodjs/web'
+import { useState } from 'react'
 
 const InviteGroup = ({ id }) => {
   const [userInvites, setUserInvites] = useState([])
@@ -36,7 +35,7 @@ const InviteGroup = ({ id }) => {
         eventId: id,
         status: 'INVITED',
       },
-      refetchQueries: [{ query: QUERY, variables: { id } }],
+      refetchQueries: [{ query: QUERY, variables: { eventId: id } }],
     })
   }
   return (
