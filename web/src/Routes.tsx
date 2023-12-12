@@ -9,7 +9,7 @@ const Routes = () => {
     <Router useAuth={useAuth}>
       <PrivateSet unauthenticated="login">
         <Set wrap={InteriorLayout}>
-          <Route path="/wishlist" page={WishlistPage} name="wishlist" />
+          <Route path="/wishlist/{userId:String}" page={WishlistPage} name="wishlist" />
           <Route path="/dashboard" page={DashboardPage} name="dashboard" />
           <Route path="/group/invite/{id:String}" page={EventInvitePage} name="invite" />
           <Route path="/event" page={EventPage} name="event" />
