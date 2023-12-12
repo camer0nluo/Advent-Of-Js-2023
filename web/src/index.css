@@ -260,3 +260,10 @@
   border: 5px dashed grey;
   background: transparent;
 }
+
+.font-cursive{
+  font-family: Kalam, cursive;
+  font-size: 24px;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}

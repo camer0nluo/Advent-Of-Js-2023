@@ -1,12 +1,11 @@
-import { useEffect } from 'react'
-
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags, useQuery } from '@redwoodjs/web'
 
-import { QUERY } from 'src/components/EventsCell/EventsCell'
 import Header from 'src/components/Header/Header'
 import HeaderWithRulers from 'src/components/HeaderWithRulers/HeaderWithRulers'
+import { QUERY } from 'src/components/EventsCell/EventsCell'
 import RsvpButton from 'src/components/RsvpButton/RsvpButton'
+import { useEffect } from 'react'
 
 const RSVPPage = ({ id }) => {
   const { data, error, loading } = useQuery(QUERY, {
@@ -24,10 +23,10 @@ const RSVPPage = ({ id }) => {
   })
 
   const handleAccept = () => {
-    navigate(routes.rsvpAccept())
+    navigate(routes.rsvpAccept({ id: id }))
   }
   const handleDecline = () => {
-    navigate(routes.rsvpDecline())
+    navigate(routes.rsvpDecline({ id: id }))
   }
 
   return (
@@ -35,13 +34,20 @@ const RSVPPage = ({ id }) => {
       <MetaTags title="RSVP Page" description="Rsvp page" />
       <div className="container	 mx-auto">
         <HeaderWithRulers heading="You're invited to" className="text-white" />
-
-        <Header
-          heading={data.event.name}
-          className="heading-space text-white"
-        />
-        <p className="heading-space text-white"> {eventDate}</p>
-        <div className="mx-96">
+        <div className="justify-center">
+          <Header
+            heading={data.event.name}
+            className="heading-space text-white"
+          />
+          <p
+            className="heading-space font-cursive text-white"
+            style={{ fontSize: '32px' }}
+          >
+            {' '}
+            {eventDate}
+          </p>
+        </div>
+        <div className="heading-space mx-auto ml-auto flex">
           <RsvpButton
             className="bg-orangeRed text-white"
             icon="thumbsDown"

@@ -9,7 +9,6 @@ import { supabase } from '../../../../api/db/supabase.ts'
 import { useAuth } from 'src/auth'
 import { useEffect } from 'react'
 
-
 const DashboardPage = () => {
   const { currentUser } = useAuth()
   const [newData, setNewData] = React.useState({
