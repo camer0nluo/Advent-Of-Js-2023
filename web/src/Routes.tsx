@@ -9,9 +9,13 @@ const Routes = () => {
     <Router useAuth={useAuth}>
       <PrivateSet unauthenticated="login">
         <Set wrap={InteriorLayout}>
+          <Route path="/wishlist/{userId:String}" page={WishlistPage} name="wishlist" />
           <Route path="/dashboard" page={DashboardPage} name="dashboard" />
           <Route path="/group/invite/{id:String}" page={EventInvitePage} name="invite" />
           <Route path="/event" page={EventPage} name="event" />
+          <Route path="/rsvp/{id:String}" page={RSVPPage} name="rsvp" />
+          <Route path="/rsvp/{id:String}/rsvp-decline" page={RsvpDeclinePage} name="rsvpDecline" />
+          <Route path="/rsvp/{id:String}/rsvp-accept" page={RsvpAcceptPage} name="rsvpAccept" />
           <Route path="/event-dashboard" page={EventDashboardPage} name="eventDashboard" />
         </Set>
       </PrivateSet>
@@ -21,9 +25,6 @@ const Routes = () => {
         <Route path="/logout" page={LogoutPage} name="logout" />
         <Route path="/login" page={LoginPage} name="login" />
         <Route path="/" page={HomePage} name="home" />
-        <Route path="/rsvp/{id:String}" page={RSVPPage} name="rsvp" />
-        <Route path="/rsvp-decline" page={RsvpDeclinePage} name="rsvpDecline" />
-        <Route path="/rsvp-accept" page={RsvpAcceptPage} name="rsvpAccept" />
         <Route notfound page={NotFoundPage} />
       </Set>
     </Router>
