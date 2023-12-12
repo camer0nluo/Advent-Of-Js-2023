@@ -14,9 +14,9 @@
  * END --- SETUP TAILWINDCSS EDIT
  */
 
-*{
+/* *{
   font-family: Kalam, cursive;
-}
+} */
 
 @layer base {
   .label,
