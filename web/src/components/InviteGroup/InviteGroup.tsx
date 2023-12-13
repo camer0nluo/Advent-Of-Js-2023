@@ -1,6 +1,4 @@
-import { useState } from 'react'
-
-import { FieldError, Form, Label, Submit, TextField } from '@redwoodjs/forms'
+import { Form, TextField } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/dist/toast'
 
@@ -9,9 +7,6 @@ import InviteCell from '../InviteCell/InviteCell'
 import RoundButton from '../RoundButton/RoundButton'
 
 const InviteGroup = ({ id }) => {
-  const [userInvites, setUserInvites] = useState([])
-  const [userData, setUserData] = useState({})
-
   const [sendInvite] = useMutation(SEND_INVITE, {
     onCompleted: () => {
       toast.success('Invite was successfully sent.')
