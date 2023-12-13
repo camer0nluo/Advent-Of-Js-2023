@@ -1,8 +1,8 @@
 import { PrivateSet, Route, Router, Set } from '@redwoodjs/router'
 
+import { useAuth } from './auth'
 import AuthLayout from './layouts/AuthLayout/AuthLayout'
 import InteriorLayout from './layouts/InteriorLayout/InteriorLayout'
-import { useAuth } from './auth'
 
 const Routes = () => {
   return (
@@ -24,8 +24,8 @@ const Routes = () => {
         <Route path="/" page={HomePage} name="home" />
         <Route notfound page={NotFoundPage} />
         <Route path="/rsvp/{id:String}" page={RSVPPage} name="rsvp" />
-        <Route path="/rsvp/{id:String}/rsvp-decline" page={RsvpDeclinePage} name="rsvpDecline" />
-        <Route path="/rsvp/{id:String}/rsvp-accept" page={RsvpAcceptPage} name="rsvpAccept" />
+        <Route path="/rsvp/{id:String}/rsvp-decline/{userId:String}" page={RsvpDeclinePage} name="rsvpDecline" />
+        <Route path="/rsvp/{id:String}/rsvp-accept/{userId:String}" page={RsvpAcceptPage} name="rsvpAccept" />
       </Set>
     </Router>
   )
