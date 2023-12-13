@@ -1,11 +1,10 @@
-import type { EventsQuery } from 'types/graphql'
-
 import type { CellFailureProps, CellSuccessProps } from '@redwoodjs/web'
-import { useMutation } from '@redwoodjs/web'
-import { Toaster } from '@redwoodjs/web/toast'
 
 import Button from '../Button/Button'
+import type { EventsQuery } from 'types/graphql'
 import ModalPopup from '../ModalPopup/ModalPopup'
+import { Toaster } from '@redwoodjs/web/toast'
+import { useMutation } from '@redwoodjs/web'
 
 export const QUERY = gql`
   query EventsQuery($id: String!) {

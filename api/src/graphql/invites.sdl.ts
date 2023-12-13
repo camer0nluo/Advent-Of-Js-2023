@@ -20,6 +20,7 @@ export const schema = gql`
     invites: [Invite!]! @requireAuth
     invite(id: String!): Invite @requireAuth
     inviteEvent(eventId: String!): [Invite!]! @requireAuth
+    findInvites(eventId: String!): [Invite!]! @requireAuth
   }
 
   input CreateInviteInput {

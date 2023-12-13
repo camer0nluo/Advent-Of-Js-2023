@@ -46,6 +46,7 @@ export const CREATE_USER_MUTATION = gql`
     }
   }
 `
+
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>Empty</div>

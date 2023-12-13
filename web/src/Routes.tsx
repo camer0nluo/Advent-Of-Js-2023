@@ -13,9 +13,6 @@ const Routes = () => {
           <Route path="/dashboard" page={DashboardPage} name="dashboard" />
           <Route path="/group/invite/{id:String}" page={EventInvitePage} name="invite" />
           <Route path="/event" page={EventPage} name="event" />
-          <Route path="/rsvp/{id:String}" page={RSVPPage} name="rsvp" />
-          <Route path="/rsvp/{id:String}/rsvp-decline" page={RsvpDeclinePage} name="rsvpDecline" />
-          <Route path="/rsvp/{id:String}/rsvp-accept" page={RsvpAcceptPage} name="rsvpAccept" />
           <Route path="/event-dashboard" page={EventDashboardPage} name="eventDashboard" />
         </Set>
       </PrivateSet>
@@ -26,6 +23,9 @@ const Routes = () => {
         <Route path="/login" page={LoginPage} name="login" />
         <Route path="/" page={HomePage} name="home" />
         <Route notfound page={NotFoundPage} />
+        <Route path="/rsvp/{id:String}" page={RSVPPage} name="rsvp" />
+        <Route path="/rsvp/{id:String}/rsvp-decline/{userId:String}" page={RsvpDeclinePage} name="rsvpDecline" />
+        <Route path="/rsvp/{id:String}/rsvp-accept/{userId:String}" page={RsvpAcceptPage} name="rsvpAccept" />
       </Set>
     </Router>
   )

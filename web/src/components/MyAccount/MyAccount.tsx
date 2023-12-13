@@ -2,6 +2,8 @@ import { useState } from 'react'
 
 import { AnimatePresence, motion } from 'framer-motion'
 
+import { Link, routes } from '@redwoodjs/router'
+
 import { useAuth } from 'src/auth'
 
 import Avatar from '../Avatar/Avatar'
@@ -22,7 +24,7 @@ const MyAccount = () => {
         </motion.div>
         <Avatar
           avatar="https://picsum.photos/seed/1701239203355/300/300"
-          alt="Amy"
+          alt="Cameron"
         />
         <div className="text-left">
           <div className="text-sm">Logged in as</div>
@@ -45,7 +47,7 @@ const MyAccount = () => {
                 <div className="text-pastelMagenta">
                   <Icon size={32} id="user" />
                 </div>
-                My Account
+                <Link to={routes.dashboard()}>My Account</Link>
               </li>
               <li>
                 <div className="text-pastelMagenta">

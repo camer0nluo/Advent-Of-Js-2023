@@ -9,6 +9,12 @@ import { db } from 'src/lib/db'
 export const invites: QueryResolvers['invites'] = () => {
   return db.invite.findMany()
 }
+
+export const findInvites: QueryResolvers['invites'] = ({ eventId }) => {
+  return db.invite.findMany({
+    where: { eventId },
+  })
+}
 export const invite: QueryResolvers['invite'] = ({ id }) => {
   return db.invite.findUnique({
     where: { id },
