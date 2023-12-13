@@ -1,12 +1,10 @@
+import type { CellFailureProps, CellSuccessProps } from '@redwoodjs/web'
+import type { FindInviteQuery, FindInviteQueryVariables } from 'types/graphql'
 import { useEffect, useState } from 'react'
 
-import type { FindInviteQuery, FindInviteQueryVariables } from 'types/graphql'
-
-import type { CellFailureProps, CellSuccessProps } from '@redwoodjs/web'
-import { useMutation } from '@redwoodjs/web'
-import { toast } from '@redwoodjs/web/dist/toast'
-
 import Card from '../Card/Card'
+import { toast } from '@redwoodjs/web/dist/toast'
+import { useMutation } from '@redwoodjs/web'
 
 export const QUERY = gql`
   query FindInviteQuery($eventId: String!) {
@@ -88,6 +86,9 @@ export const Success = ({
             key={index}
             email={item.email}
             name={item.name}
+            avatar={{
+              letter: item.name.charAt(0),
+            }}
             isCloseShowing={true}
             handleClose={() => onSubmit({ id: item.id, eventId: item.eventId })}
           />

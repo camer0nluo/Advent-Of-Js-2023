@@ -9,6 +9,9 @@ type InteriorLayoutProps = {
 
 const InteriorLayout = ({ children }: InteriorLayoutProps) => {
   const [opened, setOpened] = React.useState(false)
+  const handleLinkClick = () => {
+    setOpened(false)
+  }
   return (
     <>
       <main className="bg-interior">
@@ -23,7 +26,7 @@ const InteriorLayout = ({ children }: InteriorLayoutProps) => {
             </div>
             {opened && (
               <div className="nav-container">
-                <Nav />
+                <Nav onLinkClick={handleLinkClick} />
               </div>
             )}
           </div>
