@@ -1,32 +1,31 @@
-import {
-  FieldError,
-  Form,
-  Label,
-  Submit,
-  TextField,
-  useForm,
-} from '@redwoodjs/forms'
-import { QUERY, SEND_INVITE } from '../InviteCell/InviteCell'
+import { useState } from 'react'
 
+import { FieldError, Form, Label, Submit, TextField } from '@redwoodjs/forms'
+import { useMutation } from '@redwoodjs/web'
+import { toast } from '@redwoodjs/web/dist/toast'
+
+import { QUERY, SEND_INVITE } from '../InviteCell/InviteCell'
 import InviteCell from '../InviteCell/InviteCell'
 import RoundButton from '../RoundButton/RoundButton'
-import { toast } from '@redwoodjs/web/dist/toast'
-import { useMutation } from '@redwoodjs/web'
-import { useState } from 'react'
 
 const InviteGroup = ({ id }) => {
   const [userInvites, setUserInvites] = useState([])
   const [userData, setUserData] = useState({})
+
   const [sendInvite] = useMutation(SEND_INVITE, {
     onCompleted: () => {
       toast.success('Invite was successfully sent.')
-      getInvites({ variables: { id } })
     },
     onError: (error) => {
       console.error({ error })
       toast.error(error.message)
     },
   })
+  const resetFields = () => {
+    document.getElementById('name').value = ''
+    document.getElementById('email').value = ''
+  }
+
   const onSubmit = (inputs) => {
     sendInvite({
       variables: {
@@ -37,6 +36,7 @@ const InviteGroup = ({ id }) => {
       },
       refetchQueries: [{ query: QUERY, variables: { eventId: id } }],
     })
+    resetFields()
   }
   return (
     <div>
@@ -66,7 +66,7 @@ const InviteGroup = ({ id }) => {
           <RoundButton handleClick={onSubmit} status="warning" />
         </div>
       </Form>
-      <div className="grid grid-cols-2 gap-x-12 gap-y-8">
+      <div className="grid grid-cols-2 gap-x-12 gap-y-8 overflow-y-auto">
         <InviteCell eventId={id} />
       </div>
     </div>
