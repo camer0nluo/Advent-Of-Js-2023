@@ -136,8 +136,14 @@ export const ModifyEvent = ({ id }) => {
   const inputs = (
     <input
       type="text"
-      className="date-field"
-      placeholder="new name here"
+      className="date-field font-cursive-style"
+      placeholder=""
+      style={{
+        height: '40px',
+        width: '200px',
+        fontSize: '12px',
+        border: 'solid 2px black',
+      }}
       onChange={(e) => setName(e.target.value)}
     />
   )
@@ -147,7 +153,7 @@ export const ModifyEvent = ({ id }) => {
         <ModalPopup
           setShowModal={() => setShowModal(false)}
           title="Modify Event Name"
-          message="Modify your event name"
+          // message="Modify your event name"
           confirm={handleCheckClick}
           inputElement={inputs}
         ></ModalPopup>

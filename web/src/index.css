@@ -21,115 +21,115 @@
 @layer base {
   .label,
   label {
-    @apply font-handwriting uppercase text-xl tracking-tighter
+    @apply font-handwriting text-xl uppercase tracking-tighter;
   }
 
   label:has(+ textarea:placeholder-shown),
   label:has(+ input:placeholder-shown) {
-    @apply text-3xl top-8 left-8 transition-all duration-300 pointer-events-none
+    @apply pointer-events-none left-8 top-8 text-3xl transition-all duration-300;
   }
 
   label:has(+ textarea),
   label:has(+ textarea:focus),
   label:has(+ input),
   label:has(+ input:focus) {
-    @apply absolute top-2 left-2 text-xl
+    @apply absolute left-2 top-2 text-xl;
   }
 
   textarea,
-  input[type="password"],
-  input[type="url"],
-  input[type="number"],
-  input[type="tel"],
-  input[type="email"],
-  input[type="date"],
-  input[type="text"] {
-    @apply font-sans text-2xl h-[100px] w-full px-7
+  input[type='password'],
+  input[type='url'],
+  input[type='number'],
+  input[type='tel'],
+  input[type='email'],
+  input[type='date'],
+  input[type='text'] {
+    @apply h-[100px] w-full px-7 font-sans text-2xl;
   }
 
   textarea {
-    @apply h-[400px] pt-14
+    @apply h-[400px] pt-14;
   }
 
   input.short {
-    @apply h-[52px] text-lg outline-none
+    @apply h-[52px] text-lg outline-none;
   }
 
   /* invalid label */
   label:has(+ input:invalid:not(:placeholder-shown)) {
-    @apply text-white
+    @apply text-white;
   }
 
   /* invalid input */
   input:invalid:not(:placeholder-shown) {
-    @apply bg-orangeRed border-fireEngineRed
+    @apply border-fireEngineRed bg-orangeRed;
   }
 
   /* checkbox */
-  input[type="checkbox"] {
-    @apply hidden
+  input[type='checkbox'] {
+    @apply hidden;
   }
 
-  input[type="checkbox"] + label {
-    @apply flex items-center gap-4 font-handwriting uppercase text-3xl cursor-pointer
+  input[type='checkbox'] + label {
+    @apply flex cursor-pointer items-center gap-4 font-handwriting text-3xl uppercase;
   }
 
-  input[type="checkbox"] + label:before {
-    @apply content-[''] w-10 h-10 block relative -top-1 bg-unchecked
+  input[type='checkbox'] + label:before {
+    @apply relative -top-1 block h-10 w-10 bg-unchecked content-[''];
   }
 
-  input[type="checkbox"]:checked + label:before {
-    @apply content-[''] w-10 h-10 block relative -top-1 bg-checked
+  input[type='checkbox']:checked + label:before {
+    @apply relative -top-1 block h-10 w-10 bg-checked content-[''];
   }
 
-  button[type="submit"] {
-    @apply bg-supernova font-handwriting uppercase text-3xl text-black w-full rounded-full py-5;
+  button[type='submit'] {
+    @apply w-full rounded-full bg-supernova py-5 font-handwriting text-3xl uppercase text-black;
   }
 
   button.medium,
-  button[type="submit"].medium {
-    @apply font-sans text-xl tracking-tight font-bold uppercase h-12 px-8
+  button[type='submit'].medium {
+    @apply h-12 px-8 font-sans text-xl font-bold uppercase tracking-tight;
   }
 
   a.button.small,
   button.small,
-  button[type="submit"].small {
+  button[type='submit'].small {
     @apply inline-block h-8 px-4 text-sm font-bold uppercase;
   }
 
   main {
-    @apply z-10 overflow-scroll relative mb-[350px];
+    @apply relative z-10 mb-[350px] overflow-scroll;
   }
 
   svg {
-    @apply fill-current
+    @apply fill-current;
   }
 }
 
 @layer components {
   .bg-auth {
-    @apply min-h-screen w-screen bg-silverTree dark:bg-nileBlue bg-[center_top] bg-no-repeat bg-[length:1440px_auto] min-[1440px]:bg-[length:100%_auto];
+    @apply min-h-screen w-screen bg-silverTree bg-[length:1440px_auto] bg-[center_top] bg-no-repeat dark:bg-nileBlue min-[1440px]:bg-[length:100%_auto];
   }
 
   .bg-interior {
-    @apply grid min-h-screen w-screen grid-cols-12 gap-x-5 bg-silverTree bg-no-repeat dark:bg-nileBlue
+    @apply grid min-h-screen w-screen grid-cols-12 gap-x-5 bg-silverTree bg-no-repeat dark:bg-nileBlue;
   }
 
   .page-title {
-    @apply font-condensed uppercase text-[116px] text-white leading-none mb-5
+    @apply mb-5 font-condensed text-[116px] uppercase leading-none text-white;
   }
 
   .field {
-    @apply mb-4
+    @apply mb-4;
   }
 
   .dropdown {
-    @apply relative top-6 left-6
+    @apply relative left-6 top-6;
   }
 
   .dropdown:before {
     content: '';
-    @apply border-[12px] border-transparent border-b-white absolute -top-[24px] left-[32px]
+    @apply absolute -top-[24px] left-[32px] border-[12px] border-transparent border-b-white;
   }
 
   .dropdown li {
@@ -145,48 +145,48 @@
   }
 
   .with-rulers {
-    @apply flex items-center gap-7 justify-center;
+    @apply flex items-center justify-center gap-7;
   }
 
   .with-rulers:before,
   .with-rulers:after {
     content: '';
     text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-    @apply w-[72px] h-[6px] bg-current block
+    @apply block h-[6px] w-[72px] bg-current;
   }
 
   /* RSVP Status */
   .status-success {
-    @apply bg-spanishGreen text-spanishGreen
+    @apply bg-spanishGreen text-spanishGreen;
   }
 
   .status-warning {
-    @apply bg-supernova text-supernova
+    @apply bg-supernova text-supernova;
   }
 
   .status-error {
-    @apply bg-orangeRed text-orangeRed
+    @apply bg-orangeRed text-orangeRed;
   }
 
   /* nav */
   .top-nav li {
-    @apply font-condensed tracking-wide text-[72px] uppercase leading-none
+    @apply font-condensed text-[72px] uppercase leading-none tracking-wide;
   }
 
   .top-nav li a {
-    @apply hover:text-orangeRed
+    @apply hover:text-orangeRed;
   }
 
   .bottom-nav ul {
-    @apply flex flex-col gap-3
+    @apply flex flex-col gap-3;
   }
 
   .bottom-nav ul a {
-    @apply hover:text-orangeRed
+    @apply hover:text-orangeRed;
   }
 
   .number-with-outline {
-    @apply font-script text-[130px] leading-none
+    @apply font-script text-[130px] leading-none;
   }
 }
 
@@ -202,7 +202,7 @@
   }
 }
 
-.date-field{
+.date-field {
   margin-bottom: 20px;
   height: 100px;
   width: 100%;
@@ -215,10 +215,9 @@
   line-height: 2rem;
 }
 
-.align-links{
+.align-links {
   text-align-last: center;
 }
-
 
 .invalid {
   background-color: ivory;
@@ -227,43 +226,58 @@
   border-radius: 5px;
 }
 
-.heading{
+.heading {
   font-family: Kalam, cursive;
   font-size: 36px;
   text-transform: uppercase;
   letter-spacing: -0.05em;
 }
 
-.heading-name{
+.heading-name {
   font-family: Kalam, cursive;
   font-size: 50px;
   text-transform: uppercase;
   letter-spacing: -0.05em;
 }
 
-.edit-button{
+.edit-button {
   margin-left: 20px;
   margin-top: 15px;
 }
 
-.heading-space{
-  @apply flex items-center gap-7 justify-center;
+.heading-space {
+  @apply flex items-center justify-center gap-7;
   font-size: 72px;
 }
 
-.file-uploader{
+.file-uploader {
   border: none !important;
-
 }
 
-.file-upload-container{
+.file-upload-container {
   border: 5px dashed grey;
   background: transparent;
 }
 
-.font-cursive{
+.font-cursive {
   font-family: Kalam, cursive;
   font-size: 24px;
   padding-left: 1.75rem;
   padding-right: 1.75rem;
+}
+
+.font-cursive-style {
+  font-family: Kalam, cursive;
+}
+
+.nav-container {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  max-height: 100vh;
+}
+
+.nav-button {
+  z-index: 10000;
+  position: relative;
 }
