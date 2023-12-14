@@ -1,13 +1,15 @@
+import { useEffect } from 'react'
+
 import { FieldError, Form, Label, Submit } from '@redwoodjs/forms'
 import { Link, routes } from '@redwoodjs/router'
+import { MetaTags } from '@redwoodjs/web'
 
+import { useAuth } from 'src/auth'
 import Header from 'src/components/Header/Header'
 import Input from 'src/components/Input/Input'
-import { MetaTags } from '@redwoodjs/web'
 import ShowHidePassword from 'src/components/ShowHidePassword/ShowHidePassword'
+
 import { supabase } from '../../../../api/db/supabase.ts'
-import { useAuth } from 'src/auth'
-import { useEffect } from 'react'
 
 const DashboardPage = () => {
   const { currentUser } = useAuth()
