@@ -1,13 +1,10 @@
-import { useState } from 'react'
-
 import { AnimatePresence, motion } from 'framer-motion'
-
 import { Link, routes } from '@redwoodjs/router'
-
-import { useAuth } from 'src/auth'
 
 import Avatar from '../Avatar/Avatar'
 import Icon from '../Icon/Icon'
+import { useAuth } from 'src/auth'
+import { useState } from 'react'
 
 const MyAccount = () => {
   const [isDropdownShowing, setIsDropdownShowing] = useState(false)
@@ -22,10 +19,7 @@ const MyAccount = () => {
         <motion.div animate={{ rotate: isDropdownShowing ? 180 : 0 }}>
           <Icon id="chevron" />
         </motion.div>
-        <Avatar
-          avatar="https://picsum.photos/seed/1701239203355/300/300"
-          alt="Cameron"
-        />
+        <Avatar letter="C" />
         <div className="text-left">
           <div className="text-sm">Logged in as</div>
           <div className="text-lg">
