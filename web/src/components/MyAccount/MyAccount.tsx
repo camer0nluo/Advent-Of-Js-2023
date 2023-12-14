@@ -1,10 +1,13 @@
+import { useState } from 'react'
+
 import { AnimatePresence, motion } from 'framer-motion'
+
 import { Link, routes } from '@redwoodjs/router'
+
+import { useAuth } from 'src/auth'
 
 import Avatar from '../Avatar/Avatar'
 import Icon from '../Icon/Icon'
-import { useAuth } from 'src/auth'
-import { useState } from 'react'
 
 const MyAccount = () => {
   const [isDropdownShowing, setIsDropdownShowing] = useState(false)
@@ -47,7 +50,7 @@ const MyAccount = () => {
                 <div className="text-pastelMagenta">
                   <Icon size={32} id="calendar" />
                 </div>
-                My Event
+                <Link to={routes.eventDashboard()}>My Events</Link>
               </li>
               <li onClick={logOut}>
                 <div className="text-pastelMagenta">

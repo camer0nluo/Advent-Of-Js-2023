@@ -61,7 +61,10 @@ const InviteGroup = ({ id }) => {
           <RoundButton handleClick={onSubmit} status="warning" />
         </div>
       </Form>
-      <div className="grid grid-cols-2 gap-x-12 gap-y-8 overflow-y-auto">
+      <div
+        className="overflow-y-scroll"
+        style={{ display: 'flex !important', flexDirection: 'row' }}
+      >
         <InviteCell eventId={id} />
       </div>
     </div>
