@@ -1,10 +1,11 @@
+import type { EventsQuery } from 'types/graphql'
+
 import type { CellFailureProps, CellSuccessProps } from '@redwoodjs/web'
+import { useMutation } from '@redwoodjs/web'
+import { Toaster } from '@redwoodjs/web/toast'
 
 import Button from '../Button/Button'
-import type { EventsQuery } from 'types/graphql'
 import ModalPopup from '../ModalPopup/ModalPopup'
-import { Toaster } from '@redwoodjs/web/toast'
-import { useMutation } from '@redwoodjs/web'
 
 export const QUERY = gql`
   query EventsQuery($id: String!) {
@@ -76,6 +77,24 @@ export const CREATE_EVENT_MUTATION = gql`
       name
       date
       createdAt
+    }
+  }
+`
+
+export const GET_ALL_EVENTS = gql`
+  query getAllEvents {
+    events {
+      id
+      name
+      date
+      sendReminder
+      invite {
+        user {
+          firstName
+          lastName
+          email
+        }
+      }
     }
   }
 `
@@ -152,20 +171,29 @@ export const ModifyEvent = ({ id }) => {
       {showModal && (
         <ModalPopup
           setShowModal={() => setShowModal(false)}
-          title="Modify Event Name"
-          // message="Modify your event name"
+          title="Event Details"
+          message="Edit the current Event"
           confirm={handleCheckClick}
           inputElement={inputs}
         ></ModalPopup>
       )}
+      <div className="flex-grow">
+        <Button
+          handleClick={openEditEventModal}
+          className="margin-auto bg-supernova align-middle text-black"
+          size="small"
+        >
+          Modify Event
+        </Button>
 
-      <Button
-        handleClick={openEditEventModal}
-        className="margin-auto bg-supernova align-middle text-black"
-        size="small"
-      >
-        Edit
-      </Button>
+        <Button
+          handleClick={openEditEventModal}
+          className="margin-auto bg-supernova align-middle text-black"
+          size="small"
+        >
+          Match
+        </Button>
+      </div>
     </>
   )
 }

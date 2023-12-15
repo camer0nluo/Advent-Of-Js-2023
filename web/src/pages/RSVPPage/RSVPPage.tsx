@@ -1,11 +1,12 @@
+import { useEffect } from 'react'
+
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags, useQuery } from '@redwoodjs/web'
 
+import { QUERY } from 'src/components/EventsCell/EventsCell'
 import Header from 'src/components/Header/Header'
 import HeaderWithRulers from 'src/components/HeaderWithRulers/HeaderWithRulers'
-import { QUERY } from 'src/components/EventsCell/EventsCell'
 import RsvpButton from 'src/components/RsvpButton/RsvpButton'
-import { useEffect } from 'react'
 
 const RSVPPage = ({ id }) => {
   const { data, error, loading } = useQuery(QUERY, {
