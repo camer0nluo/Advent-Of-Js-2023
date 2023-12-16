@@ -1,5 +1,6 @@
 import type { EventsQuery } from 'types/graphql'
 
+import { Link, navigate, routes, useLocation } from '@redwoodjs/router'
 import type { CellFailureProps, CellSuccessProps } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 import { Toaster } from '@redwoodjs/web/toast'
@@ -136,6 +137,7 @@ export const Success = ({ event }: CellSuccessProps<EventsQuery>) => {
 }
 
 export const ModifyEvent = ({ id }) => {
+  const { pathname, search, hash } = useLocation()
   const [showModal, setShowModal] = React.useState(false)
   const [name, setName] = React.useState('')
   const [updateEventName, { data, loading, error }] =
@@ -151,7 +153,10 @@ export const ModifyEvent = ({ id }) => {
   const openEditEventModal = () => {
     setShowModal(true)
   }
-
+  const matchUsers = () => {
+    navigate(routes.match({ id: id }))
+  }
+  console.log(pathname)
   const inputs = (
     <input
       type="text"
@@ -185,14 +190,17 @@ export const ModifyEvent = ({ id }) => {
         >
           Modify Event
         </Button>
-
-        <Button
-          handleClick={openEditEventModal}
-          className="margin-auto bg-supernova align-middle text-black"
-          size="small"
-        >
-          Match
-        </Button>
+        {!pathname.includes('/group/matched/') && (
+          <Button
+            handleClick={() => {
+              matchUsers(id)
+            }}
+            className="margin-auto bg-supernova align-middle text-black"
+            size="small"
+          >
+            Match
+          </Button>
+        )}
       </div>
     </>
   )

@@ -12,6 +12,7 @@ const Routes = () => {
           <Route path="/wishlist/{userId:String}" page={WishlistPage} name="wishlist" />
           <Route path="/dashboard" page={DashboardPage} name="dashboard" />
           <Route path="/group/invite/{id:String}" page={EventInvitePage} name="invite" />
+          <Route path="/group/matched/{id:String}" page={MatchPage} name="match" />
           <Route path="/event" page={EventPage} name="event" />
           <Route path="/event-dashboard" page={EventDashboardPage} name="eventDashboard" />
         </Set>
