@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import type { FindInviteQuery, FindInviteQueryVariables } from 'types/graphql'
 
+import { Link, navigate, routes, useLocation } from '@redwoodjs/router'
 import type { CellFailureProps, CellSuccessProps } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/dist/toast'
@@ -59,6 +60,7 @@ export const Success = ({
   findInvites,
 }: CellSuccessProps<FindInviteQuery, FindInviteQueryVariables>) => {
   const [totalInvites, setTotalInvites] = useState([])
+  const { pathname, search, hash } = useLocation()
   const [invites, setInvites] = useState([])
   const [eventId, setEventId] = useState('')
   const [selectedStatus, setSelectedStatus] = useState('ALL')
@@ -105,47 +107,49 @@ export const Success = ({
 
   return (
     <div>
-      <div className="flex justify-between gap-10">
-        <RsvpStatus
-          status="error"
-          heading="Declined"
-          count={
-            totalInvites.filter((item) => item.status === 'DECLINED').length
-          }
-          onClick={() => filterInvites('DECLINED')}
-          disabled={selectedStatus !== 'DECLINED' && selectedStatus !== 'ALL'}
-          clearFilter={{
-            isShowing: selectedStatus === 'DECLINED',
-            handleClick: handleClickClearFilter,
-          }}
-        />
-        <RsvpStatus
-          status="warning"
-          heading="Pending"
-          count={
-            totalInvites.filter((item) => item.status === 'INVITED').length
-          }
-          onClick={() => filterInvites('INVITED')}
-          disabled={selectedStatus !== 'INVITED' && selectedStatus !== 'ALL'}
-          clearFilter={{
-            isShowing: selectedStatus === 'INVITED',
-            handleClick: handleClickClearFilter,
-          }}
-        />{' '}
-        <RsvpStatus
-          status="success"
-          heading="Accepted"
-          onClick={() => filterInvites('ACCEPTED')}
-          disabled={selectedStatus !== 'ACCEPTED' && selectedStatus !== 'ALL'}
-          count={
-            totalInvites.filter((item) => item.status === 'ACCEPTED').length
-          }
-          clearFilter={{
-            isShowing: selectedStatus === 'ACCEPTED',
-            handleClick: handleClickClearFilter,
-          }}
-        />
-      </div>
+      {pathname.includes('/group/invite/') && (
+        <div className="flex justify-between gap-10">
+          <RsvpStatus
+            status="error"
+            heading="Declined"
+            count={
+              totalInvites.filter((item) => item.status === 'DECLINED').length
+            }
+            onClick={() => filterInvites('DECLINED')}
+            disabled={selectedStatus !== 'DECLINED' && selectedStatus !== 'ALL'}
+            clearFilter={{
+              isShowing: selectedStatus === 'DECLINED',
+              handleClick: handleClickClearFilter,
+            }}
+          />
+          <RsvpStatus
+            status="warning"
+            heading="Pending"
+            count={
+              totalInvites.filter((item) => item.status === 'INVITED').length
+            }
+            onClick={() => filterInvites('INVITED')}
+            disabled={selectedStatus !== 'INVITED' && selectedStatus !== 'ALL'}
+            clearFilter={{
+              isShowing: selectedStatus === 'INVITED',
+              handleClick: handleClickClearFilter,
+            }}
+          />
+          <RsvpStatus
+            status="success"
+            heading="Accepted"
+            onClick={() => filterInvites('ACCEPTED')}
+            disabled={selectedStatus !== 'ACCEPTED' && selectedStatus !== 'ALL'}
+            count={
+              totalInvites.filter((item) => item.status === 'ACCEPTED').length
+            }
+            clearFilter={{
+              isShowing: selectedStatus === 'ACCEPTED',
+              handleClick: handleClickClearFilter,
+            }}
+          />
+        </div>
+      )}
       <br />
       <div className="overflow grid h-96	grid-cols-2 gap-x-12 gap-y-8 overflow-y-scroll	">
         {invites &&

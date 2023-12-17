@@ -2,7 +2,8 @@ import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import Accordion from 'src/components/Accordion/Accordion'
-import EventsCell from 'src/components/EventsCell/EventsCell'
+import EventsCell, { Matchings } from 'src/components/EventsCell/EventsCell'
+import InviteCell from 'src/components/InviteCell/InviteCell'
 
 const MatchPage = ({ id }) => {
   return (
@@ -11,6 +12,8 @@ const MatchPage = ({ id }) => {
       <EventsCell id={id} />
       <Accordion heading="Failed to RSVP" />
       <Accordion heading="Declined to Participate" />
+      <InviteCell eventId={id} />
+      <Matchings eventId={id} />
     </>
   )
 }
