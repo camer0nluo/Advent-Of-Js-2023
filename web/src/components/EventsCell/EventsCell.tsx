@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import type { EventsQuery } from 'types/graphql'
 
 import { Link, navigate, routes, useLocation } from '@redwoodjs/router'
@@ -211,20 +213,25 @@ export const Matchings = ({ eventId }) => {
   const { data, loading, error } = useQuery(GET_INVITES_QUERY, {
     variables: { eventId },
   })
-  console.log('current', data)
+  const [inviteData, setInviteData] = useState(null)
+  useEffect(() => {
+    setInviteData(data)
+  }, [data])
   return (
     <div>
       <div>
-        {data &&
-          data.findInvites &&
-          data.findInvites.map((index, invite) => (
+        {inviteData &&
+          inviteData.findInvites &&
+          inviteData.findInvites.map((invite, index) => (
             <div key={index}>
               <Pairing
                 secretSanta={{
                   name: invite.name,
                   isCloseShowing: false,
                   email: invite.email,
-                  avatar: { letter: invite.name.charAt(0) },
+                  avatar: {
+                    letter: invite.name ? invite.name.charAt(0) : 'C',
+                  },
                 }}
                 pairing={invite}
                 showPairing={false}
