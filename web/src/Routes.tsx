@@ -7,6 +7,7 @@ import InteriorLayout from './layouts/InteriorLayout/InteriorLayout'
 const Routes = () => {
   return (
     <Router useAuth={useAuth}>
+      <Route path="/create-new-event" page={CreateNewEventPage} name="createNewEvent" />
       <PrivateSet unauthenticated="login">
         <Set wrap={InteriorLayout}>
           <Route path="/wishlist/{userId:String}" page={WishlistPage} name="wishlist" />

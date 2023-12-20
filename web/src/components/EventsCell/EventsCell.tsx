@@ -1,12 +1,16 @@
+import { useEffect, useState } from 'react'
+
 import type { EventsQuery } from 'types/graphql'
 
 import { Link, navigate, routes, useLocation } from '@redwoodjs/router'
 import type { CellFailureProps, CellSuccessProps } from '@redwoodjs/web'
-import { useMutation } from '@redwoodjs/web'
+import { useMutation, useQuery } from '@redwoodjs/web'
 import { Toaster } from '@redwoodjs/web/toast'
 
 import Button from '../Button/Button'
+import { QUERY as GET_INVITES_QUERY } from '../InviteCell/InviteCell'
 import ModalPopup from '../ModalPopup/ModalPopup'
+import Pairing from '../Pairing/Pairing'
 
 export const QUERY = gql`
   query EventsQuery($id: String!) {
@@ -156,7 +160,6 @@ export const ModifyEvent = ({ id }) => {
   const matchUsers = () => {
     navigate(routes.match({ id: id }))
   }
-  console.log(pathname)
   const inputs = (
     <input
       type="text"
@@ -203,5 +206,46 @@ export const ModifyEvent = ({ id }) => {
         )}
       </div>
     </>
+  )
+}
+
+export const Matchings = ({ eventId }) => {
+  const { data, loading, error } = useQuery(GET_INVITES_QUERY, {
+    variables: { eventId },
+  })
+  const [inviteData, setInviteData] = useState(null)
+  useEffect(() => {
+    setInviteData(data)
+  }, [data])
+  return (
+    <div>
+      <div>
+        {inviteData &&
+          inviteData.findInvites &&
+          inviteData.findInvites.map((invite, index) => (
+            <div key={index}>
+              <Pairing
+                secretSanta={{
+                  name: invite.name,
+                  isCloseShowing: false,
+                  email: invite.email,
+                  avatar: {
+                    letter: invite.name ? invite.name.charAt(0) : 'C',
+                  },
+                }}
+                pairing={invite}
+                showPairing={false}
+              />{' '}
+              <br />
+            </div>
+          ))}
+      </div>
+
+      {/* <Pairing
+        secretSanta={{ name: 'Secret Santa' }}
+        pairing={{ name: 'Pairing' }}
+        showPairing={false}
+      /> */}
+    </div>
   )
 }
