@@ -14,7 +14,7 @@ const Nav = ({ onLinkClick }) => {
             <Link to="#">Our Group</Link>
           </li>
           <li>
-            <Link to="#">My Wish List</Link>
+            <Link to={routes.wishlist({ userId: String })}>My Wish List</Link>
           </li>
         </ul>
       </nav>
